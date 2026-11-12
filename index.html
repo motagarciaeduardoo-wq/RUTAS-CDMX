@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>Rutas CDMX — paquete para celu</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><h1>🚌 Rutas CDMX</h1><p class="sub">Reconstrucción estática para celu — no es el código original de Muse. Ver README-CELU.md</p></header>
+<main>
+<section class="card">
+<h2>¿A dónde vas?</h2>
+<input id="from" placeholder="¿De dónde sales? Ej. tu calle y número, o Santa Martha">
+<input id="to" placeholder="¿A dónde vas? Ej. Constitución de 1917, Zócalo">
+<div class="row">
+<button id="gpsBtn">📍 Usar mi ubicación</button>
+<button id="searchBtn" class="primary">Buscar ruta</button>
+</div>
+<div id="placeResult"></div>
+<div id="results"></div>
+</section>
+
+<section class="card"><h2>🗺️ Mapa</h2><div id="map"></div><p id="mapNote">Toca “Buscar ruta” para ver el camino. El triángulo azul eres tú (GPS).</p></section>
+
+<section class="card"><h2>🧭 Modo viaje</h2><div id="trip"></div><button id="startTrip" class="primary">Iniciar viaje</button></section>
+
+<section class="card"><h2>🏠 Tus lugares</h2>
+<div class="row"><input id="homeInput" placeholder="Casa: calle y número"><button onclick="savePlace('casa')">Guardar Casa</button></div>
+<div class="row"><input id="workInput" placeholder="Trabajo: calle y número"><button onclick="savePlace('trabajo')">Guardar Trabajo</button></div>
+<p id="savedPlaces"></p></section>
+
+<section class="card"><h2>📋 Catálogo (rutas reales verificadas)</h2>
+<input id="filter" placeholder="Filtra: metro 8, trolebús 10, RTP…">
+<div id="catalog"></div></section>
+
+<section class="card"><h2>🚨 En vivo — Iztapalapa (12 nov 2026)</h2><div id="alerts"></div>
+<p class="small">En esta versión estática las alertas no se actualizan solas. En la app original se actualizaban con IA + noticias.</p></section>
+
+<section class="card"><h2>🤖 Pregúntale a la IA (versión local)</h2>
+<input id="q" placeholder="Ej. ¿cuánto cuesta el Trolebús 13?">
+<button id="askBtn">Preguntar</button><div id="answer"></div>
+<p class="small">Contesta solo con el catálogo de esta app + Nominatim (lugares). Si no hay dato, lo dice, no inventa.</p></section>
+
+<section class="card"><h2>👥 Comunidad (solo en tu celu)</h2>
+<input id="comName" placeholder="Ruta que falta: ej. Combi Tláhuac–Chalco">
+<input id="comDetail" placeholder="De dónde a dónde, costo">
+<button onclick="addCommunity()">Agregar ruta</button><div id="community"></div>
+<p class="small">Se guarda solo en tu teléfono (localStorage). En la app original se compartía con todos.</p></section>
+</main>
+<button id="aiBall" title="IA">✦</button>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

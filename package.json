@@ -1,0 +1,1 @@
+{"dependencies":{},"description":"Rutas CDMX — reconstrucción estática para desplegar desde el celu. Sin servidor, sin claves.","name":"rutas-cdmx-celu","private":true,"scripts":{"build:apk":"echo 'Primero sube esta carpeta a GitHub, luego usa Capacitor en Termux o un builder online. Ver README-CELU.md'","start":"npx serve ."},"version":"1.0.0"}
